@@ -19,10 +19,10 @@ namespace Livraria.API.Controllers
         }
 
         [HttpGet]
-        [Route("books/{pagina}")]
-        public IActionResult ListBook(int pagina)
+        [Route("book")]
+        public IActionResult Get()
         {
-            return Ok(_repository.Get(pagina));
+            return Ok(_repository.Get());
         }
 
         [HttpGet]
@@ -48,11 +48,13 @@ namespace Livraria.API.Controllers
             return await Response(result, _handler.Notifications);
         }
 
-        [HttpDelete]
-        [Route("book")]
-        public async Task<IActionResult> Delete([FromBody] DeleteBookCommnad command)
+        [HttpPost]
+        [Route("bookRemove/{id}")]
+        public async Task<IActionResult> Delete(Guid id)
         {
-            var result = _handler.Handle(command);
+            var deleteBookCommnad = new DeleteBookCommnad();
+            deleteBookCommnad.Id = id;
+            var result = _handler.Handle(deleteBookCommnad);
             return await Response(result, _handler.Notifications);
         }
 

@@ -45,7 +45,7 @@ namespace Livraria.Domain.Commands.Handlers
 
         public ICommandResult Handle(UpdateBookCommnad command)
         {
-            var book = _bookRepository.Get(command.Id);
+            var book = _bookRepository.GetBook(command.Id);
             if (book == null)
             {
                 AddNotification("Book","Livro não encontrado");
@@ -72,7 +72,7 @@ namespace Livraria.Domain.Commands.Handlers
 
         public ICommandResult Handle(DeleteBookCommnad command)
         {
-            var book = _bookRepository.Get(command.Id);
+            var book = _bookRepository.GetBook(command.Id);
             if (book == null)
             {
                 AddNotification("Book", "Livro não encontrado");

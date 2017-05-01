@@ -41,6 +41,7 @@
     <Compile Include="Commands\Input\RegisterBookCommnad.cs" />
     <Compile Include="Commands\Input\UpdateBookCommnad.cs" />
     <Compile Include="Commands\Result\BookResult.cs" />
+    <Compile Include="Commands\Result\DTOBook.cs" />
     <Compile Include="Commands\Result\GridBook.cs" />
     <Compile Include="Entities\Book.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

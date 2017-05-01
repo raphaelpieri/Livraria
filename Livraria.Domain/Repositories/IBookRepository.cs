@@ -8,8 +8,9 @@ namespace Livraria.Domain.Repositories
 {
     public interface IBookRepository
     {
-        Book Get(Guid id);
-        IList<GridBook> Get(int paginaAtual);
+        DTOBook Get(Guid id);
+        Book GetBook(Guid id);
+        IList<GridBook> Get();
         void Save(Book book);
         void Update(Book book);
         void Remove(Book book);

@@ -18,23 +18,38 @@ namespace Livraria.Infra.Repositories
             _context = context;
         }
 
-        public Book Get(Guid id)
+        public Book GetBook(Guid id)
         {
             return _context.Books.FirstOrDefault(x => x.Id == id);
         }
+        public DTOBook Get(Guid id)
+        {
+            return _context.Books.Select(x => new DTOBook()
+            {
+                Id = x.Id,
+                Title =  x.Title.CompleteName,
+                Author = x.Author.CompleteName,
+                PublishingCompany = x.PublishingCompany.CompleteName,
+                Value =  x.Value,
+                QuantityOnHand = x.QuantityOnHand,
+                Page = x.Page
+            }).FirstOrDefault(x => x.Id == id);
+        }
 
-        public IList<GridBook> Get(int paginaAtual)
+        public IList<GridBook> Get()
         {
             var resultado = (from b in _context.Books
-                select new GridBook()
-                {
-                    Title = b.Title.CompleteName,
-                    Author = b.Author.CompleteName,
-                    PublishingCompany = b.PublishingCompany.CompleteName,
-                    Value =  b.Value
-                });
+                             orderby b.Title.CompleteName descending
+                             select new GridBook()
+                             {
+                                 Id = b.Id,
+                                 Title = b.Title.CompleteName,
+                                 Author = b.Author.CompleteName,
+                                 PublishingCompany = b.PublishingCompany.CompleteName,
+                                 Value = b.Value
+                             });
 
-            return resultado.OrderBy(x => x.Title).Skip((paginaAtual - 1) * 30).Take(30).ToList();
+            return resultado.ToList();
         }
 
         public void Save(Book book)
