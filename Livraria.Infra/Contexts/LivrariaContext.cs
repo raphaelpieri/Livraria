@@ -1,12 +1,13 @@
 ﻿using System.Data.Entity;
 using Livraria.Domain.Entities;
 using Livraria.Infra.Mappings;
+using Livraria.Shared;
 
 namespace Livraria.Infra.Contexts
 {
     public class LivrariaContext : DbContext
     {
-        public LivrariaContext() : base(@"Server=.\sqlexpress;Database=livraria;User ID=sa;Password=1")
+        public LivrariaContext() : base(Runtime.ConnectionString)
         {
             Configuration.LazyLoadingEnabled = false;
             Configuration.ProxyCreationEnabled = false;
