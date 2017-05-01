@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E57314E4-3833-4703-9EA9-4AFDEF5EDC07}</ProjectGuid>
+    <ProjectGuid>{912CE1A3-61D3-4DB3-BDAA-FE470A32427B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Livraria.Domain</RootNamespace>
-    <AssemblyName>Livraria.Domain</AssemblyName>
+    <RootNamespace>Livraria.Shared</RootNamespace>
+    <AssemblyName>Livraria.Shared</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,34 +31,21 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\Handlers\BookCommandHandler.cs" />
-    <Compile Include="Commands\Input\DeleteBookCommnad.cs" />
-    <Compile Include="Commands\Input\RegisterBookCommnad.cs" />
-    <Compile Include="Commands\Input\UpdateBookCommnad.cs" />
-    <Compile Include="Commands\Result\BookResult.cs" />
-    <Compile Include="Commands\Result\GridBook.cs" />
-    <Compile Include="Entities\Book.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\ICommandHandler.cs" />
+    <Compile Include="Commands\ICommandResult.cs" />
+    <Compile Include="Entities\Entity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\IBookRepository.cs" />
-    <Compile Include="ValueObjects\Name.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FluentValidator\FluentValidator.csproj">
       <Project>{0a49ae1b-0bea-42ed-afe6-0018c953a206}</Project>
       <Name>FluentValidator</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Livraria.Shared\Livraria.Shared.csproj">
-      <Project>{912ce1a3-61d3-4db3-bdaa-fe470a32427b}</Project>
-      <Name>Livraria.Shared</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
